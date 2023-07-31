@@ -19,7 +19,7 @@
 	//--------------------------------Model layer----------------------------------------
 	// DB연결
 	String driver = "org.mariadb.jdbc.Driver";
-	String dburl = "jdbc:mariadb://127.0.0.1:3306/userboard";
+	String dburl = "jdbc:mariadb://52.78.47.161:3306/userboard";
 	String dbuser = "root";
 	String dbpw = "java1234";
 	Class.forName(driver);
@@ -32,7 +32,7 @@
 		SELECT member_id memberId, member_pw memberPw, createdate, updatedate FROM MEMBER WHERE member_id
 	*/
 	// 로그인한 Member 정보를 조회(출력)
-	myPageSql = "SELECT member_id memberId, member_pw memberPw, createdate, updatedate FROM MEMBER WHERE member_id = ?";
+	myPageSql = "SELECT member_id memberId, member_pw memberPw, createdate, updatedate FROM member WHERE member_id = ?";
 	myPageStmt = conn.prepareStatement(myPageSql);
 	myPageStmt.setString(1, memberId);
 	System.out.println(myPageStmt + "myPage myPageStmt");

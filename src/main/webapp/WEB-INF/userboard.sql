@@ -1,20 +1,22 @@
 -- --------------------------------------------------------
--- 호스트:                          127.0.0.1
--- 서버 버전:                        10.5.19-MariaDB - mariadb.org binary distribution
--- 서버 OS:                        Win64
--- HeidiSQL 버전:                  11.3.0.6295
+-- 호스트:                          52.78.47.161
+-- 서버 버전:                        10.1.48-MariaDB-0ubuntu0.18.04.1 - Ubuntu 18.04
+-- 서버 OS:                        debian-linux-gnu
+-- HeidiSQL 버전:                  12.3.0.6589
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET NAMES utf8 */;
 /*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
 -- userboard 데이터베이스 구조 내보내기
-CREATE DATABASE IF NOT EXISTS `userboard` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci */;
+CREATE DATABASE IF NOT EXISTS `userboard` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `userboard`;
 
 -- 테이블 userboard.board 구조 내보내기
@@ -31,11 +33,11 @@ CREATE TABLE IF NOT EXISTS `board` (
   KEY `FK__member` (`member_id`),
   CONSTRAINT `FK__local` FOREIGN KEY (`local_name`) REFERENCES `local` (`local_name`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK__member` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1012 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1012 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 userboard.board:~997 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `board` DISABLE KEYS */;
-INSERT IGNORE INTO `board` (`board_no`, `local_name`, `board_title`, `board_content`, `member_id`, `createdate`, `updatedate`) VALUES
+-- 테이블 데이터 userboard.board:~1,003 rows (대략적) 내보내기
+DELETE FROM `board`;
+INSERT INTO `board` (`board_no`, `local_name`, `board_title`, `board_content`, `member_id`, `createdate`, `updatedate`) VALUES
 	(1, '광명', 'Squirrel, african bush', 'ac leo pellentesque ultrices mattis odio donec vitae nisi nam ultrices libero non mattis pulvinar nulla pede', 'user2', '2022-11-20 00:00:00', '2023-05-03 00:00:00'),
 	(2, '부천', 'Gazer, sun', 'phasellus id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus pellentesque eget', 'user4', '2022-07-20 00:00:00', '2023-05-03 00:00:00'),
 	(3, '서울', 'Common melba finch', 'non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus', 'user5', '2023-01-06 00:00:00', '2023-05-03 00:00:00'),
@@ -1038,10 +1040,7 @@ INSERT IGNORE INTO `board` (`board_no`, `local_name`, `board_title`, `board_cont
 	(1000, '대구', 'Gazelle, thomson\'s', 'duis bibendum morbi non quam nec dui luctus rutrum nulla tellus', 'user2', '2022-08-24 00:00:00', '2023-05-03 00:00:00'),
 	(1002, '울릉도', '섬', '오징어', 'admin', '2023-05-15 12:02:24', '2023-05-15 12:02:24'),
 	(1004, '상해', '중국', '중국', 'admin', '2023-05-15 12:05:15', '2023-05-15 12:05:15'),
-	(1005, '상해', '중국', '중국', 'admin', '2023-05-15 12:05:31', '2023-05-15 12:05:31'),
-	(1008, '평양', '평양', '냉면', 'admin', '2023-05-15 12:12:14', '2023-05-15 12:12:14'),
-	(1009, '평양', '평양', '냉면test', 'admin', '2023-05-15 12:53:19', '2023-05-15 12:53:19');
-/*!40000 ALTER TABLE `board` ENABLE KEYS */;
+	(1008, '평양', '평양', '냉면', 'admin', '2023-05-15 12:12:14', '2023-05-15 12:12:14');
 
 -- 테이블 userboard.comment 구조 내보내기
 CREATE TABLE IF NOT EXISTS `comment` (
@@ -1056,11 +1055,11 @@ CREATE TABLE IF NOT EXISTS `comment` (
   KEY `FK_comment_member` (`member_id`),
   CONSTRAINT `FK_comment_board` FOREIGN KEY (`board_no`) REFERENCES `board` (`board_no`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_comment_member` FOREIGN KEY (`member_id`) REFERENCES `member` (`member_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 userboard.comment:~101 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT IGNORE INTO `comment` (`comment_no`, `board_no`, `comment_content`, `member_id`, `createdate`, `updatedate`) VALUES
+-- 테이블 데이터 userboard.comment:~106 rows (대략적) 내보내기
+DELETE FROM `comment`;
+INSERT INTO `comment` (`comment_no`, `board_no`, `comment_content`, `member_id`, `createdate`, `updatedate`) VALUES
 	(1, 994, '다른 아이디입니다. 수정이 가능한가요', 'user1', '2023-05-04 00:00:00', '2023-05-15 10:09:26'),
 	(2, 996, 'consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna', 'user2', '2023-05-04 00:00:00', '2023-05-04 00:00:00'),
 	(3, 996, '같은 아이디입니다. 수정이 가능한가요', 'admin', '2023-05-04 00:00:00', '2023-05-15 10:19:45'),
@@ -1161,8 +1160,12 @@ INSERT IGNORE INTO `comment` (`comment_no`, `board_no`, `comment_content`, `memb
 	(98, 1000, '다른 아이디입니다. 수정이 가능한가요', 'user1', '2023-05-04 00:00:00', '2023-05-15 10:09:26'),
 	(99, 994, '같은 아이디입니다. 수정이 가능한가요', 'admin', '2023-05-04 00:00:00', '2023-05-15 10:19:45'),
 	(100, 994, '다른 아이디입니다. 수정이 가능한가요', 'user1', '2023-05-04 00:00:00', '2023-05-15 10:09:26'),
-	(101, 84, '수정 test', 'admin', '2023-05-04 17:47:34', '2023-05-15 10:56:57');
-/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
+	(101, 84, '수정 test', 'admin', '2023-05-04 17:47:34', '2023-05-15 10:56:57'),
+	(108, 617, 'Namsan Tower is a famous place in Seoul', 'admin', '2023-07-30 23:08:59', '2023-07-30 23:08:59'),
+	(109, 617, 'If you come to Seoul to play, you should try bulgogi.', 'admin', '2023-07-30 23:09:46', '2023-07-30 23:09:46'),
+	(112, 1008, 'Cold noodles are famous in Pyongyang.', 'admin', '2023-07-30 23:13:39', '2023-07-30 23:13:39'),
+	(113, 1004, 'China has a long history.', 'admin', '2023-07-30 23:14:23', '2023-07-30 23:14:23'),
+	(114, 1002, 'A lot of squid are caught on Ulleungdo Island.', 'admin', '2023-07-30 23:14:49', '2023-07-30 23:14:49');
 
 -- 테이블 userboard.local 구조 내보내기
 CREATE TABLE IF NOT EXISTS `local` (
@@ -1170,11 +1173,11 @@ CREATE TABLE IF NOT EXISTS `local` (
   `createdate` datetime NOT NULL,
   `updatedate` datetime NOT NULL,
   PRIMARY KEY (`local_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 userboard.local:~12 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `local` DISABLE KEYS */;
-INSERT IGNORE INTO `local` (`local_name`, `createdate`, `updatedate`) VALUES
+-- 테이블 데이터 userboard.local:~11 rows (대략적) 내보내기
+DELETE FROM `local`;
+INSERT INTO `local` (`local_name`, `createdate`, `updatedate`) VALUES
 	('광명', '2023-05-03 10:14:06', '2023-05-03 10:14:06'),
 	('대구', '2023-05-03 10:13:43', '2023-05-03 10:13:43'),
 	('대전', '2023-05-03 10:13:31', '2023-05-03 10:13:31'),
@@ -1186,7 +1189,6 @@ INSERT IGNORE INTO `local` (`local_name`, `createdate`, `updatedate`) VALUES
 	('울릉도', '2023-05-10 14:32:54', '2023-05-10 14:32:54'),
 	('인천', '2023-05-03 10:13:20', '2023-05-03 10:13:20'),
 	('평양', '2023-05-15 12:12:04', '2023-05-15 12:12:04');
-/*!40000 ALTER TABLE `local` ENABLE KEYS */;
 
 -- 테이블 userboard.member 구조 내보내기
 CREATE TABLE IF NOT EXISTS `member` (
@@ -1195,19 +1197,20 @@ CREATE TABLE IF NOT EXISTS `member` (
   `createdate` date NOT NULL,
   `updatedate` date NOT NULL,
   PRIMARY KEY (`member_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 userboard.member:~6 rows (대략적) 내보내기
-/*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT IGNORE INTO `member` (`member_id`, `member_pw`, `createdate`, `updatedate`) VALUES
+-- 테이블 데이터 userboard.member:~7 rows (대략적) 내보내기
+DELETE FROM `member`;
+INSERT INTO `member` (`member_id`, `member_pw`, `createdate`, `updatedate`) VALUES
 	('admin', '*A4B6157319038724E3560894F7F932C8886EBFCF', '2023-05-02', '2023-05-02'),
 	('user1', '*A4B6157319038724E3560894F7F932C8886EBFCF', '2023-05-03', '2023-05-03'),
 	('user2', '*A4B6157319038724E3560894F7F932C8886EBFCF', '2023-05-03', '2023-05-03'),
 	('user3', '*A4B6157319038724E3560894F7F932C8886EBFCF', '2023-05-03', '2023-05-03'),
 	('user4', '*A4B6157319038724E3560894F7F932C8886EBFCF', '2023-05-03', '2023-05-03'),
-	('user5', '*A4B6157319038724E3560894F7F932C8886EBFCF', '2023-05-03', '2023-05-03');
-/*!40000 ALTER TABLE `member` ENABLE KEYS */;
+	('user5', '*A4B6157319038724E3560894F7F932C8886EBFCF', '2023-05-03', '2023-05-03'),
+	('user6', '*A4B6157319038724E3560894F7F932C8886EBFCF', '2023-07-30', '2023-07-30');
 
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

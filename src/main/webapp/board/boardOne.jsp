@@ -39,7 +39,7 @@
 		//---------------------------model layer---------------------------------
 		//DB연결
 		String driver = "org.mariadb.jdbc.Driver";
-		String dburl = "jdbc:mariadb://127.0.0.1:3306/userboard";
+		String dburl = "jdbc:mariadb://52.78.47.161:3306/userboard";
 		String dbuser = "root";
 		String dbpw = "java1234";
 		Class.forName(driver);
@@ -81,7 +81,7 @@
 		PreparedStatement commentListStmt = null;
 		ResultSet commentListRs = null;
 		String commentListSql = "SELECT comment_no commentNo, board_no boardNo, comment_content commentContent,"
-				+" member_id memberId, createdate, updatedate FROM COMMENT WHERE board_no = ? LIMIT ?, ?";
+				+" member_id memberId, createdate, updatedate FROM comment WHERE board_no = ? LIMIT ?, ?";
 		commentListStmt = conn.prepareStatement(commentListSql);
 		commentListStmt.setInt(1, boardNo);
 		commentListStmt.setInt(2, startRow);
@@ -276,7 +276,7 @@
 	           <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4">
 	             <div class="card">
 	             <div class="card-header-tabs">
-			       <h3 class="card-title center">추가할 댓글을 입력해주세요.</h3>
+			       <h3 class="card-title center">댓글은 로그인후 <br>이용할 수 있습니다.</h3>
 			      </div>
 	               <div class="card-body">
 	               	 <!-- 3-2) comment 입력 : 세션유무에 따른 분기 -->
@@ -338,7 +338,7 @@
 						<%
 								// 현재 접속한 사람과 댓글 작성자가 같을경우에만 수정/삭제 링크 표시되도록
 								String loginMemberId = (String)session.getAttribute("loginMemberId");
-								if(loginMemberId.equals(c.getMemberId())) {
+								if(loginMemberId != null && loginMemberId.equals(c.getMemberId())) {
 						%>
 								<td>
 									<a href="<%=request.getContextPath()%>/board/modifyComment.jsp?boardNo=<%=boardNo%>&commentNo=<%=c.getCommentNo()%>">수정</a>
