@@ -4,6 +4,9 @@
 <%@ page import="java.net.*" %>
 <%@ page import="vo.*" %>
 <%
+	//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
+	request.setCharacterEncoding("utf-8");
+
 	// 요청값 확인
 	System.out.println(Integer.parseInt(request.getParameter("boardNo"))+ "modifyBoardAction param boardNo");
 	System.out.println(request.getParameter("memberId")+ "modifyBoardAction param memberId");
@@ -13,8 +16,6 @@
 	System.out.println(request.getParameter("boardContent")+ "modifyBoardAction param boardContent");
 	
 	//----------------------------------Controller layer--------------------------------------
-	//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
-	request.setCharacterEncoding("utf-8");
 	
 	String msg = null;
 

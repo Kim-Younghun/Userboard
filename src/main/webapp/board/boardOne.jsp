@@ -5,8 +5,9 @@
 <%
 		//-------------------------controller layer-------------------------
 		// 1.요청처리
+		
 		//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
-		request.setCharacterEncoding("utf-8");
+		request.setCharacterEncoding("UTF-8");
 		
 		if(request.getParameter("boardNo") == null
 				|| request.getParameter("boardNo").equals("")) {
@@ -39,7 +40,7 @@
 		//---------------------------model layer---------------------------------
 		//DB연결
 		String driver = "org.mariadb.jdbc.Driver";
-		String dburl = "jdbc:mariadb://52.78.47.161:3306/userboard";
+		String dburl = "jdbc:mariadb://52.78.47.161:3306/userboard?useUnicode=true&characterEncoding=utf8";
 		String dbuser = "root";
 		String dbpw = "java1234";
 		Class.forName(driver);
@@ -169,8 +170,8 @@
 			// 로그인전에 나타나는 메뉴
 			if(session.getAttribute("loginMemberId") == null) {
 			%>
-					<li class="menu-item">
-			           <a href="<%=request.getContextPath()%>/member/insertMemberForm.jsp" class="menu-link">
+				   <li class="menu-item">
+			          <a href="<%=request.getContextPath()%>/member/insertMemberForm.jsp" class="menu-link">
 			           <i class="menu-icon tf-icons bx bx-home-circle"></i>
 			           <div>회원가입</div>
 			         </a>

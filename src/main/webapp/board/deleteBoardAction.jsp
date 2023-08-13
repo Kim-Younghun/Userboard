@@ -5,13 +5,14 @@
 <%@ page import="vo.*" %>   
 <%
 	//-------------------------Controller Layer-------------------------
+	
+	//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
+	request.setCharacterEncoding("utf-8");
+	
 	//요청값 확인
 	System.out.println(Integer.parseInt(request.getParameter("boardNo"))+ "modifyBoardAction param boardNo");
 	System.out.println(request.getParameter("memberId")+ "modifyBoardAction param memberId");
 	System.out.println(request.getParameter("localName")+ "modifyBoardAction param localName");
-	
-	//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
-	request.setCharacterEncoding("utf-8");
 	
 	String msg = null;
 

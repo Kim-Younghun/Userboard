@@ -5,6 +5,9 @@
 <%@ page import = "vo.*"%>
 
 <%
+	//인코딩 코드
+	request.setCharacterEncoding("utf-8");
+
 	//요청값 확인코드
 	System.out.println(Integer.parseInt(request.getParameter("boardNo")) + " <--modifyCommentAction param boardNo");
 	System.out.println(request.getParameter("commentContent") + " <--modifyCommentAction param commentContent");
@@ -12,8 +15,6 @@
 	System.out.println(request.getParameter("memberId") + " <--modifyCommentAction param memberId");
 	
 	//------------------------Controller Layer--------------------------
-	// 인코딩 코드
-	request.setCharacterEncoding("utf-8");
 
 	String msg = null;
 	

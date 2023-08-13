@@ -4,6 +4,9 @@
 <%@ page import="vo.*" %>
 <%	
 	//----------------------------controller layer-------------------------
+	// 인코딩 코드
+	request.setCharacterEncoding("utf-8");
+	
 	// 1) 요청분석(컨트롤러 계층)
 	// 1) session JSP 내장(기본)객체 -> 만들지 않아도 나중에 JAVA코드에 합쳐진다. 
 	
@@ -26,9 +29,6 @@
 		localName = request.getParameter("localName");
 	}
 	
-	 // 인코딩 코드
-	request.setCharacterEncoding("utf-8");
-
 	 // 디버깅
 	System.out.println(localName+"<-- home param localName"); 
 	
@@ -40,7 +40,7 @@
 	//---------------------------Model layer----------------------------
 	//DB연결 ,모델값을 한곳에 모아서 구한다.
 	String driver = "org.mariadb.jdbc.Driver";
-	String dburl = "jdbc:mariadb://localhost:3306/userboard";
+	String dburl = "jdbc:mariadb://52.78.47.161:3306/userboard";
 	String dbuser = "root";
 	String dbpw = "java1234";
 	Class.forName(driver);
@@ -294,7 +294,7 @@
 							<%
 								if(currentPage > 1) {
 							%>	
-								<a href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=startPage-1%>&rowPerPage=<%=rowPerPage%>&localName=<%=localName%>">이전</a>
+								<a href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=currentPage-1%>&rowPerPage=<%=rowPerPage%>&localName=<%=localName%>">이전</a>
 							<%
 								}
 							%>
@@ -320,7 +320,7 @@
 							<%
 								if(currentPage < lastPage) {
 							%>
-								<a href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=endPage+1%>&rowPerPage=<%=rowPerPage%>&localName=<%=localName%>">다음</a>
+								<a href="<%=request.getContextPath()%>/home.jsp?currentPage=<%=currentPage+1%>&rowPerPage=<%=rowPerPage%>&localName=<%=localName%>">다음</a>
 							<%
 								}
 							%>

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	//-----------------------------Controller layer----------------------------
+	// 인코딩 코드
+	request.setCharacterEncoding("utf-8");
+	
 	// 지역리스트(localList)로부터 받은 지역명 -> updateLocalAction에서 update sql문에 사용한다. 
 	System.out.println(request.getParameter("localName") + " <--updateLocalForm param localName");
 	String dbLocalName = request.getParameter("localName");

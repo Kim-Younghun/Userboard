@@ -4,6 +4,9 @@
 <%@ page import="java.net.*" %>
 <%@ page import="vo.*" %>   
 <%
+	//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
+	request.setCharacterEncoding("UTF-8");
+
 	// 넘겨받은 변수확인
 	System.out.println(request.getParameter("memberId"));
 	System.out.println(request.getParameter("boardTitle"));
@@ -11,9 +14,6 @@
 	System.out.println(request.getParameter("localName"));
 	
 	//---------------------------Controller layer-------------------------------
-	//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
-	request.setCharacterEncoding("utf-8");
-	
 	String msg = null;
 
 	//요청검사(loginMemberId, boardNo, currentPage, rowPerPage..)
@@ -61,15 +61,15 @@
 	ResultSet insertBoardRs = null;
 	String insertBoardSql = "";
 	
-	insertBoardSql = "INSERT INTO board(board_title, board_content, member_id, local_name, createdate, updatedate)"
+	insertBoardSql = "INSERT INTO board(local_name, board_title, board_content, member_id, createdate, updatedate)"
 	+ " VALUES(?, ?, ?, ?, NOW(), NOW())";
 	insertBoardStmt = conn.prepareStatement(insertBoardSql);
-	insertBoardStmt.setString(1, boardTitle);
-	insertBoardStmt.setString(2, boardContent);
-	insertBoardStmt.setString(3, memberId);
-	insertBoardStmt.setString(4, localName);
+	insertBoardStmt.setString(1, localName);
+	insertBoardStmt.setString(2, boardTitle);
+	insertBoardStmt.setString(3, boardContent);
+	insertBoardStmt.setString(4, memberId);
 	// ? 값 확인
-	System.out.println(insertBoardStmt + "insertBoardAction param insertBoardStmt");
+	System.out.println(insertBoardStmt + "<-- insertBoardAction param insertBoardStmt");
 	int row = insertBoardStmt.executeUpdate();
 	
 	if(row == 1) {

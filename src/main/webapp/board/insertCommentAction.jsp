@@ -3,13 +3,14 @@
 <%@ page import="java.util.*" %>
 <%@ page import="vo.*" %>
 <%
+	//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
+	request.setCharacterEncoding("UTF-8");
+
 	System.out.println(Integer.parseInt(request.getParameter("boardNo")));
 	System.out.println(request.getParameter("memberId"));
 	System.out.println(request.getParameter("commentContent"));
 	
 	//--------------------Controller layer-----------------------------------
-	//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
-	request.setCharacterEncoding("utf-8");
 
 	//요청검사(loginMemberId, boardNo, currentPage, rowPerPage..)
 	// 로그인 사용자만 댓글 입력 허용 -> 로그인되지 않은 경우 다른 페이지로 보내기
@@ -28,7 +29,7 @@
 	//-------------------------Model layer------------------------------
 	// DB연결
 	String driver = "org.mariadb.jdbc.Driver";
-	String dburl = "jdbc:mariadb://52.78.47.161:3306/userboard";
+	String dburl = "jdbc:mariadb://52.78.47.161:3306/userboard?useUnicode=true&characterEncoding=utf8";
 	String dbuser = "root";
 	String dbpw = "java1234";
 	Class.forName(driver);
@@ -48,7 +49,7 @@
 	commentInsertStmt.setString(2, commentContent);
 	commentInsertStmt.setString(3, loginMemberId);
 	// ? 값 확인
-	System.out.println(commentInsertStmt + "insertCommentAction param commentInsertStmt");
+	System.out.println(commentInsertStmt + "<-- insertCommentAction param commentInsertStmt");
 	int row = commentInsertStmt.executeUpdate();
 	
 	// 댓글 입력 성공유무에 따른 분기

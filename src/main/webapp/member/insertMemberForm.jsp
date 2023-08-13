@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	//-----------------------Controller layer------------------------
+	// 인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
+	request.setCharacterEncoding("utf-8");
+	
 	//session 유효성 검사 -> 로그인된 경우 홈으로 리디렉션
 	if(session.getAttribute("loginMemberId") != null) {
 		response.sendRedirect(request.getContextPath()+"/home.jsp");

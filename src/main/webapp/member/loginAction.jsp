@@ -4,6 +4,9 @@
 <%@ page import="vo.*" %>
 <%
 	//--------------------------------Controller layer-----------------------------------
+	// 인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
+	request.setCharacterEncoding("utf-8");
+	
 	// 1. 세션 유효성 검사 -> 2. 요청값 유효성 검사
 	// 로그인된 클라이언트가 들어오지 못하도록
 	if(session.getAttribute("loginMemberId") != null) {

@@ -2,6 +2,10 @@
 
 <%
 	//----------------------------------Controller layer--------------------------------
+	
+	// 인코딩 코드
+	request.setCharacterEncoding("utf-8");
+	
 	// 로그인이 되어있지 않으면 home으로 리다이렉션
 	if(session.getAttribute("loginMemberId") == null){
 		response.sendRedirect(request.getContextPath()+"/home.jsp");

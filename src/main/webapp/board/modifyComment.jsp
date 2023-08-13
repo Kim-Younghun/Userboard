@@ -3,6 +3,10 @@
 	
 	//-----------------------------Controller layer----------------------------
 	//요청검사
+	
+	//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
+	request.setCharacterEncoding("utf-8");
+	
 	if(request.getParameter("boardNo") == null
 		|| request.getParameter("boardNo").equals("")
 		|| request.getParameter("commentNo") == null

@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+
+		//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
+		request.setCharacterEncoding("UTF-8");	
+
 		// 요청값 확인
 		System.out.println(request.getParameter("memberId"));
 		System.out.println(request.getParameter("localName"));
 		//------------Controller layer-------------------------------
 		// 1.요청처리
-		//인코딩을 맞춰서 영어를 제외한 언어가 깨짐을 방지함.
-		request.setCharacterEncoding("utf-8");
 		
 		if(request.getParameter("memberId") == null
 			|| request.getParameter("memberId").equals("")
@@ -20,8 +22,8 @@
 		String localName = request.getParameter("localName");
 		
 		// 변수값확인
-		System.out.println(memberId + "insertBoard memberId");
-		System.out.println(localName + "insertBoard localName");
+		System.out.println(memberId + "<-- insertBoard memberId");
+		System.out.println(localName + "<-- insertBoard localName");
 		//------------------------View layer--------------------------------
 %>   
 <!DOCTYPE html>
